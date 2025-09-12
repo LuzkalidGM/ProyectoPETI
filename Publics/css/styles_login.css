@@ -1,0 +1,516 @@
+/* Login Hogareño - Estilo Cálido y Acogedor */
+/* Paleta: Cremas, Marrones suaves, Verdes naturales */
+
+/* Reset y configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, #f7f3e9 0%, #e8ddd4 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #5d4e37;
+}
+
+/* Contenedor principal */
+.login-container {
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(139, 165, 95, 0.2);
+    border: none;
+    overflow: hidden;
+    width: 100%;
+    max-width: 950px;
+    min-height: 650px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Panel izquierdo - Bienvenida Hogareña */
+.welcome-panel {
+    background: linear-gradient(135deg, #8ba55f, #a0956b);
+    color: white;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.welcome-panel::before {
+    content: '🏠';
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 2rem;
+    opacity: 0.7;
+}
+
+/* Overlay flotante corregido */
+.welcome-panel::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 35px,
+        rgba(255,255,255,0.05) 35px,
+        rgba(255,255,255,0.05) 70px
+    );
+    animation: float 20s linear infinite;
+    pointer-events: none; /* Importante: no interceptar clicks */
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-50px, -50px) rotate(360deg); }
+}
+
+.logo-welcome {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+    text-transform: none;
+    letter-spacing: 1px;
+}
+
+.welcome-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    z-index: 2;
+    position: relative;
+}
+
+.feature-list {
+    list-style: none;
+    z-index: 2;
+    position: relative;
+}
+
+.feature-list li {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.feature-list li::before {
+    content: '✓';
+    background: #a0956b;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+/* Panel derecho - Formulario */
+.form-panel {
+    padding: 60px 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-title {
+    font-size: 2rem;
+    color: #8ba55f;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(139, 165, 95, 0.1);
+}
+
+.form-subtitle {
+    color: #a0956b;
+    font-size: 0.95rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Pestañas de Login/Registro */
+.tab-container {
+    display: flex;
+    margin-bottom: 30px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #a0956b;
+    font-family: 'Georgia', serif;
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, #8ba55f, #a0956b);
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 165, 95, 0.4);
+    transform: translateY(-1px);
+}
+
+.tab-button:not(.active):hover {
+    background: rgba(139, 165, 95, 0.1);
+    color: #8ba55f;
+    transform: translateY(-1px);
+}
+
+/* Formularios */
+.form-content {
+    display: none;
+}
+
+.form-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 5;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    position: relative;
+    z-index: 5;
+    pointer-events: auto;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #8ba55f;
+    box-shadow: 0 0 0 3px rgba(139, 165, 95, 0.1);
+}
+
+.form-input::placeholder {
+    color: #999;
+}
+
+.form-input.error {
+    border-color: #f44336;
+}
+
+/* Checkbox personalizado */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    background: #8ba55f;
+    border-color: #8ba55f;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Botones */
+.btn {
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 10; /* Asegurar que esté por encima */
+    pointer-events: auto; /* Asegurar que sea clickeable */
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #8ba55f, #a0956b);
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-family: 'Georgia', serif;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #a0956b, #8ba55f);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 165, 95, 0.5);
+}
+
+.btn-google {
+    background: white;
+    color: #333;
+    border: 2px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10; /* Asegurar que esté por encima */
+}
+
+.btn-google:hover {
+    border-color: #8ba55f;
+    box-shadow: 0 4px 15px rgba(139, 165, 95, 0.2);
+}
+
+.btn-google:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Ocultar el botón automático de Google */
+.g_id_signin {
+    display: none !important;
+}
+
+#g_id_onload {
+    display: none !important;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Mensajes de alerta */
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-success {
+    background: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #4caf50;
+}
+
+.alert-error {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #f44336;
+}
+
+/* Enlaces */
+.link {
+    color: #8ba55f;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #8ba55f;
+    text-decoration: underline;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-small {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Botón de volver */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        max-width: 400px;
+        margin: 10px;
+    }
+    
+    .welcome-panel {
+        padding: 40px 30px;
+    }
+    
+    .form-panel {
+        padding: 40px 30px;
+    }
+    
+    .logo-welcome {
+        font-size: 2rem;
+    }
+    
+    .form-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .welcome-panel,
+    .form-panel {
+        padding: 30px 20px;
+    }
+    
+    .logo-welcome {
+        font-size: 1.8rem;
+    }
+    
+    .form-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* Spinner de carga */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
