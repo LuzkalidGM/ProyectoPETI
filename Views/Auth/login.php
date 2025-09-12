@@ -23,19 +23,7 @@ if (AuthController::isLoggedIn()) {
 </head>
 <body>
     <div class="login-container">
-        <!-- Panel izquierdo - Bienvenida -->
-        <div class="welcome-panel">
-            <a href="../../index.php" class="back-button">← Volver al inicio</a>
-            
-            <div class="logo-welcome">PETTY</div>
-            
-            <ul class="feature-list">
-                <li>Guía estructurada paso a paso</li>
-                <li>Ahorro de tiempo y accesibilidad</li>
-                <li>Toma de decisiones más clara</li>
-                <li>Reportes profesionales</li>
-            </ul>
-        </div>
+        
         
         <!-- Panel derecho - Formulario -->
         <div class="form-panel">
